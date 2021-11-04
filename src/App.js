@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import ContactForm from './ContactForm/ContactForm'
 import Filter from './Filter/Filter'
 import ContactList from './ContactList/ContactList'
@@ -30,6 +30,13 @@ function App() {
     setFilter(e.target.value)
   }
 
+  const filteredContacts = useMemo(() => {
+    const normFilter = filter.toLowerCase()
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(normFilter)
+    )
+  }, [filter, contacts])
+
   const deleteContact = (id) => {
     setContacts(contacts.filter((contact) => contact.id !== id))
   }
@@ -49,7 +56,7 @@ function App() {
       <ContactList>
         <ContactItem
           filter={filter}
-          contacts={contacts}
+          filteredContacts={filteredContacts}
           deleteContact={deleteContact}
         ></ContactItem>
       </ContactList>

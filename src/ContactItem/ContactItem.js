@@ -1,37 +1,21 @@
 import PropTypes from 'prop-types'
 import './ContactItem.css'
 
-const ContactItem = ({ filter, contacts, deleteContact }) => {
+const ContactItem = ({ filteredContacts, deleteContact }) => {
   return (
     <>
-      {filter === ''
-        ? contacts.map(({ id, name, number }) => (
-            <li key={id}>
-              {name}: {number}
-              <button
-                type='button'
-                className='delete-button'
-                onClick={() => deleteContact(id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))
-        : contacts.map(
-            ({ id, name, number }) =>
-              name.toLowerCase().includes(filter.toLowerCase()) && (
-                <li key={id}>
-                  {name}: {number}
-                  <button
-                    type='button'
-                    className='delete-button'
-                    onClick={() => deleteContact(id)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              )
-          )}
+      {filteredContacts.map(({ id, name, number }) => (
+        <li key={id}>
+          {name}: {number}
+          <button
+            type='button'
+            className='delete-button'
+            onClick={() => deleteContact(id)}
+          >
+            Delete
+          </button>
+        </li>
+      ))}
     </>
   )
 }
