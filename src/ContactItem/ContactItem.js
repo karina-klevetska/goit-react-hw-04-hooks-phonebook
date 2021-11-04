@@ -21,8 +21,7 @@ const ContactItem = ({ filteredContacts, deleteContact }) => {
 }
 
 ContactItem.propTypes = {
-  filter: PropTypes.string,
-  contacts: PropTypes.array,
+  filteredContacts: PropTypes.array,
   deleteContact: PropTypes.func,
 }
 
