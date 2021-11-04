@@ -19,7 +19,6 @@ const Filter = ({ handleChangeFilter }) => {
 }
 
 Filter.propTypes = {
-  filterId: PropTypes.string,
   handleChangeFilter: PropTypes.func,
 }
 
